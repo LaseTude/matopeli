@@ -97,6 +97,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.FoodI, function (sprite, otherSp
     }
     Apple.setPosition(randint(6, 150), randint(6, 114))
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+})
 let hännänjatko: Sprite = null
 let Bomb: Sprite = null
 let Y = 0
@@ -124,18 +127,17 @@ forever(function () {
     Bomb.setPosition(randint(6, 150), Bomb.y)
 })
 forever(function () {
-    for (let index = 0; index < info.score(); index++) {
+    pause(500)
+    if (info.score() >= 2) {
         hännänjatko = sprites.create(assets.image`Häntä`, SpriteKind.Enemy)
         hännänjatko.setPosition(häntä.x, häntä.y)
         hännänjatko.lifespan = info.score() * 500
-        pause(500)
     }
 })
 // liikutetaan pelaajaa
 forever(function () {
-    pause(499)
+    pause(500)
     häntä.setPosition(PlayerX, PlayerY)
-    pause(1)
     PlayerX += X
     PlayerY += Y
     if (PlayerX < 6 || PlayerY < 6 || (PlayerX > 150 || PlayerY > 114)) {
