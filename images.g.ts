@@ -162,29 +162,6 @@ f 2 2 2 2 2 2 2 2 2 f 2 2 f
 . . . f 2 2 f f 2 2 f . . . 
 . . . . f f . . f f . . . . 
 `;
-            case "image2":
-            case "Bombn":return img`
-. . . . . . . . . . . . . . 
-. . . . . 4 2 . . . . . . . 
-. . . . . 5 . . . . . . . . 
-. . . . f . . . . . . . . . 
-. . . . f f f f f . . . . . 
-. . . f f f f f f f f . . . 
-. . f f 1 1 f f f f f f . . 
-. f f 1 1 f f f f f f f f . 
-. f f 1 f f f f f f f f f . 
-f f f f f f f f f f f f f f 
-f f f f f f f f f f f f f f 
-f f f f f f f f f f f f f f 
-f f f f f f f f f f f f f f 
-. f f f f f f f f f f f f . 
-. f f f f f f f f f f f f . 
-. . f f f f f f f f f f . . 
-. . . f f f f f f f f . . . 
-. . . . . f f f f . . . . . 
-. . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . 
-`;
             case "RxS@)GHifAx1kV9`WXb1":
             case "Sirpaleet":return img`
 . . . . . . . . . . . . . . . . 
@@ -499,6 +476,26 @@ a 3 3 3 3 3 3 3 3 1 3 a
 3 b b 3 3 3 3 3 3 3 3 3 
 a 3 b b 3 3 3 3 3 3 3 a 
 . a 3 3 3 3 3 3 3 3 a . 
+`;
+            case "image2":
+            case "Bombn":return img`
+. . . . . . 4 2 . . . . . . . . 
+. . . . . . 5 . . . . . . . . . 
+. . . . . f . . . . . . . . . . 
+. . . . . f f f f f . . . . . . 
+. . . . f f f f f f f f . . . . 
+. . . f f 1 1 f f f f f f . . . 
+. . f f 1 1 f f f f f f f f . . 
+. . f f 1 f f f f f f f f f . . 
+. f f f f f f f f f f f f f f . 
+. f f f f f f f f f f f f f f . 
+. f f f f f f f f f f f f f f . 
+. f f f f f f f f f f f f f f . 
+. . f f f f f f f f f f f f . . 
+. . f f f f f f f f f f f f . . 
+. . . f f f f f f f f f f . . . 
+. . . . f f f f f f f f . . . . 
+. . . . . . f f f f . . . . . . 
 `;
         }
         return null;

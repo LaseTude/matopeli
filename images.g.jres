@@ -14,11 +14,6 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Omena"
     },
-    "image2": {
-        "data": "hwQOABQAAAAAAAAA8P8PAAAAAAAAAADw////DwAAAAAAAAD//////wAAAAAAAPAf8f///w8AAAAA8P8R/////w8AAABABf/x//////8AAAAgAP////////8AAAAAAP////////8AAAAAAP////////8AAAAAAPD//////w8AAAAAAPD//////w8AAAAAAAD//////wAAAAAAAADw////DwAAAAAAAAAA8P8PAAAAAAA=",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "Bombn"
-    },
     "RxS@)GHifAx1kV9`WXb1": {
         "data": "hwQQABEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAA//AAAAAAAAAAAAAA8PAAAAAAAAAAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
         "mimeType": "image/x-mkcd-f4",
@@ -48,6 +43,11 @@
         "data": "hwQMAAwAAACgMzMzMwoAADozMzO7owAAMzMzM7M7AAAzMzMzMzsAADMzMzMzMwAAMzMzMzMzAAAzMzMzMzMAADMzMzMzMwAAMzMzMzMzAAATMzMzMzMAADoxMzMzowAAoDMzMzMKAAA=",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Häntä"
+    },
+    "image2": {
+        "data": "hwQQABEAAAAAAAAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAD/////AAAAAAAAAPD/////DwAAAAAAAP8R/////wAAAAAA/x/x/////wAAAABU8B///////w8AAAAC8P///////w8AAAAA8P///////w8AAAAA8P///////w8AAAAAAP///////wAAAAAAAP///////wAAAAAAAPD/////DwAAAAAAAAD/////AAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAAAAAAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Bombn"
     },
     "vu)9Q%TZ(phYtX):{DWL": {
         "namespace": "myImages",
