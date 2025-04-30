@@ -462,21 +462,6 @@ a 3 3 3 3 3 3 3 3 1 3 a
 c 3 1 1 1 1 1 1 1 1 3 c 
 . c c c c c c c c c c . 
 `;
-            case "ECiTeEcE*S]L]#|epY8Y":
-            case "Häntä":return img`
-. a 3 3 3 3 3 3 3 3 a . 
-a 3 3 3 3 3 3 3 3 1 3 a 
-3 3 3 3 3 3 3 3 3 3 1 3 
-3 3 3 3 3 3 3 3 3 3 3 3 
-3 3 3 3 3 3 3 3 3 3 3 3 
-3 3 3 3 3 3 3 3 3 3 3 3 
-3 3 3 3 3 3 3 3 3 3 3 3 
-3 3 3 3 3 3 3 3 3 3 3 3 
-3 b 3 3 3 3 3 3 3 3 3 3 
-3 b b 3 3 3 3 3 3 3 3 3 
-a 3 b b 3 3 3 3 3 3 3 a 
-. a 3 3 3 3 3 3 3 3 a . 
-`;
             case "image2":
             case "Bombn":return img`
 . . . . . . 4 2 . . . . . . . . 
@@ -496,6 +481,36 @@ a 3 b b 3 3 3 3 3 3 3 a
 . . . f f f f f f f f f f . . . 
 . . . . f f f f f f f f . . . . 
 . . . . . . f f f f . . . . . . 
+`;
+            case "ECiTeEcE*S]L]#|epY8Y":
+            case "Seinä":return img`
+. . . . c c c c . . . . 
+. . . c b b b b c . . . 
+. . c b b d d d d c c c 
+. c b d d d d d d d d c 
+c b d d d d d d d d d c 
+c b d b b d d d d d d c 
+c b d d d b d d d b b c 
+c b d d d b d d d b b c 
+c b d d d d b b b b b c 
+c b b b b d d d d b b c 
+c b b b b b d d d b b c 
+c c c b b b c c b c c c 
+`;
+            case "image6":
+            case "Häntä":return img`
+. a 3 3 3 3 3 3 3 3 a . 
+a 3 3 3 3 3 3 3 1 1 3 a 
+3 3 3 3 3 3 3 3 3 1 1 3 
+3 3 3 3 3 3 3 3 3 3 1 3 
+3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 
+3 b 3 3 3 3 3 3 3 3 3 3 
+3 b b 3 3 3 3 3 3 3 3 3 
+3 3 b b 3 3 3 3 3 3 3 3 
+c 3 3 3 3 3 3 3 3 3 3 c 
+. c 3 3 3 3 3 3 3 3 c . 
 `;
         }
         return null;

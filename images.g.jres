@@ -39,15 +39,20 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "MadonPää"
     },
-    "ECiTeEcE*S]L]#|epY8Y": {
-        "data": "hwQMAAwAAACgMzMzMwoAADozMzO7owAAMzMzM7M7AAAzMzMzMzsAADMzMzMzMwAAMzMzMzMzAAAzMzMzMzMAADMzMzMzMwAAMzMzMzMzAAATMzMzMzMAADoxMzMzowAAoDMzMzMKAAA=",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "Häntä"
-    },
     "image2": {
         "data": "hwQQABEAAAAAAAAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAD/////AAAAAAAAAPD/////DwAAAAAAAP8R/////wAAAAAA/x/x/////wAAAABU8B///////w8AAAAC8P///////w8AAAAA8P///////w8AAAAA8P///////w8AAAAAAP///////wAAAAAAAP///////wAAAAAAAPD/////DwAAAAAAAAD/////AAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAAAAAAA=",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Bombn"
+    },
+    "ECiTeEcE*S]L]#|epY8Y": {
+        "data": "hwQMAAwAAAAAAMzMzMwAAADAu7u7ywAAALzd3b3LAADA273dvbsAALzbvd29uwAAvN3du927AAC83d3d280AALzd3d3bzQAAwN3d3du9AAAA3N27u8sAAADc3bu7ywAAAMzMzMzMAAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Seinä"
+    },
+    "image6": {
+        "data": "hwQMAAwAAACgMzMzMwwAADozM7M7wwAAMzMzM7szAAAzMzMzszMAADMzMzMzMwAAMzMzMzMzAAAzMzMzMzMAADMzMzMzMwAAEzMzMzMzAAATMTMzMzMAADoRMzMzwwAAoDMzMzMMAAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Häntä"
     },
     "vu)9Q%TZ(phYtX):{DWL": {
         "namespace": "myImages",
