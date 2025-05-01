@@ -237,7 +237,7 @@ forever(function () {
     }
 })
 forever(function () {
-    if (final_score >= 10 - (lvl - 1) * 4) {
+    if (final_score >= 150 - (lvl - 1) * 4) {
         game.showLongText("Läpäisit tason" + lvl, DialogLayout.Bottom)
         if (lvl != 5) {
             game.showLongText("Taso" + (lvl + 1), DialogLayout.Center)
