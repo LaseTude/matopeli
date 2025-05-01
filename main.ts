@@ -82,7 +82,7 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, oth
 })
 // Omena
 sprites.onOverlap(SpriteKind.Häntä, SpriteKind.Projectile, function (sprite, otherSprite) {
-    if (Math.percentChance(5)) {
+    if (true) {
         Bomb.setVelocity(0, 0)
         info.changeScoreBy(20)
         final_score += 20
@@ -231,71 +231,71 @@ forever(function () {
 })
 // elämän menetys
 forever(function () {
-    if (final_score != 0) {
-        pauseUntil(() => controller.left.isPressed() || controller.up.isPressed() || (controller.right.isPressed() || controller.down.isPressed()))
-        if (X == 0 && Y == 0) {
-            info.changeLifeBy(-1)
-        }
+    pauseUntil(() => controller.left.isPressed() || controller.up.isPressed() || (controller.right.isPressed() || controller.down.isPressed()))
+    if (X == 0 && Y == 0) {
+        info.changeLifeBy(-1)
     }
 })
 forever(function () {
     if (final_score >= 10 - (lvl - 1) * 4) {
         game.showLongText("Läpäisit tason" + lvl, DialogLayout.Bottom)
-        if (game.ask("Taso", lvl + 1)) {
-            sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
-            sprites.destroyAllSpritesOfKind(SpriteKind.Wall)
-            häntä.setPosition(6, 6)
-            final_score = 0
-            PlayerX = 6
-            PlayerY = 6
-            X = 0
-            Y = 12
-            lvl += 1
-            if (2 <= lvl) {
-                Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-                Seinä.setPosition(18, 18)
-                Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-                Seinä.setPosition(138, 18)
-                Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-                Seinä.setPosition(18, 102)
-                Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-                Seinä.setPosition(138, 102)
-            }
-            if (3 <= lvl) {
-                Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-                Seinä.setPosition(18, 30)
-                Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-                Seinä.setPosition(138, 30)
-                Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-                Seinä.setPosition(18, 90)
-                Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-                Seinä.setPosition(138, 90)
-                sprites.destroyAllSpritesOfKind(SpriteKind.FoodI)
-            }
-            if (4 <= lvl) {
-                Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-                Seinä.setPosition(30, 18)
-                Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-                Seinä.setPosition(124, 18)
-                Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-                Seinä.setPosition(30, 102)
-                Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-                Seinä.setPosition(124, 102)
-            }
-            if (5 <= lvl) {
-                Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-                Seinä.setPosition(30, 30)
-                Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-                Seinä.setPosition(124, 30)
-                Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-                Seinä.setPosition(30, 90)
-                Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-                Seinä.setPosition(124, 90)
-            }
-            if (6 == lvl) {
-                game.setGameOverEffect(true, effects.confetti)
-                game.gameOver(true)
-            }
+        if (lvl != 5) {
+            game.showLongText("Taso" + (lvl + 1), DialogLayout.Center)
+        }
+        PlayerX = 6
+        PlayerY = 6
+        X = 0
+        Y = 12
+        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+        sprites.destroyAllSpritesOfKind(SpriteKind.Wall)
+        häntä.setPosition(6, 6)
+        final_score = 0
+        final_score = 0
+        lvl += 1
+        if (2 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(18, 18)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(138, 18)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(18, 102)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(138, 102)
+        }
+        if (3 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(18, 30)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(138, 30)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(18, 90)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(138, 90)
+            sprites.destroyAllSpritesOfKind(SpriteKind.FoodI)
+        }
+        if (4 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(30, 18)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(124, 18)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(30, 102)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(124, 102)
+        }
+        if (5 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(30, 30)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(124, 30)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(30, 90)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(124, 90)
+        }
+        if (6 == lvl) {
+            game.setGameOverEffect(true, effects.confetti)
+            game.gameOver(true)
         }
     }
 })
