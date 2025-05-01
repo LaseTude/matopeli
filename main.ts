@@ -21,22 +21,6 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.FoodI, function (sprite, otherSpr
     }
     Apple.setPosition(randint(6, 150), randint(6, 114))
 })
-// Omena
-sprites.onOverlap(SpriteKind.Wall, SpriteKind.Projectile, function (sprite, otherSprite) {
-    if (Math.percentChance(5)) {
-        Bomb.setVelocity(0, 0)
-    } else {
-        Bomb.setVelocity(0, 0)
-        animation.runImageAnimation(
-        Bomb,
-        assets.animation`Explosion`,
-        200,
-        false
-        )
-    }
-    sprites.destroy(Bomb, effects.fire, 200)
-    sprites.destroy(Seinä, effects.clouds, 200)
-})
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Food, function (sprite, otherSprite) {
     sprites.destroy(Babana, effects.spray, 200)
     animation.runImageAnimation(
@@ -82,7 +66,7 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, oth
 })
 // Omena
 sprites.onOverlap(SpriteKind.Häntä, SpriteKind.Projectile, function (sprite, otherSprite) {
-    if (true) {
+    if (Math.percentChance(5)) {
         Bomb.setVelocity(0, 0)
         info.changeScoreBy(20)
         final_score += 20
@@ -107,7 +91,9 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Food, function (sprite, otherSpri
     Babana.setPosition(randint(6, 150), randint(6, 114))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Wall, function (sprite, otherSprite) {
-    info.changeLifeBy(-1)
+    if (!(final_score >= 150)) {
+        info.changeLifeBy(-1)
+    }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     Y = 0
@@ -184,14 +170,15 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.FoodI, function (sprite, oth
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
 })
-let hännänjatko: Sprite = null
 let Seinä: Sprite = null
+let hännänjatko: Sprite = null
 let Bomb: Sprite = null
 let Y = 0
 let X = 0
 let Apple: Sprite = null
 let Babana: Sprite = null
 let final_score = 0
+final_score = 0
 let lvl = 1
 info.setLife(1)
 scene.setBackgroundImage(assets.image`Tausta_2`)
@@ -220,8 +207,10 @@ forever(function () {
     PlayerX += X
     PlayerY += Y
     PlayerPlayer.setPosition(PlayerX, PlayerY)
-    if (PlayerX < 6 || PlayerY < 6 || (PlayerX > 150 || PlayerY > 114)) {
-        info.changeLifeBy(-1)
+    if (!(final_score >= 150)) {
+        if (PlayerX < 6 || PlayerY < 6 || (PlayerX > 150 || PlayerY > 114)) {
+            info.changeLifeBy(-1)
+        }
     }
     if (final_score >= 2) {
         hännänjatko = sprites.create(assets.image`Häntä`, SpriteKind.Enemy)
@@ -237,9 +226,9 @@ forever(function () {
     }
 })
 forever(function () {
-    if (final_score >= 150 - (lvl - 1) * 4) {
+    if (final_score >= 150 - (lvl - 1) * 3) {
         game.showLongText("Läpäisit tason" + lvl, DialogLayout.Bottom)
-        if (lvl != 5) {
+        if (lvl != 13) {
             game.showLongText("Taso" + (lvl + 1), DialogLayout.Center)
         }
         PlayerX = 6
@@ -254,46 +243,102 @@ forever(function () {
         lvl += 1
         if (2 <= lvl) {
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-            Seinä.setPosition(18, 18)
+            Seinä.setPosition(18, 30)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-            Seinä.setPosition(138, 18)
+            Seinä.setPosition(18, 42)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-            Seinä.setPosition(18, 102)
-            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-            Seinä.setPosition(138, 102)
+            Seinä.setPosition(18, 54)
         }
         if (3 <= lvl) {
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-            Seinä.setPosition(18, 30)
+            Seinä.setPosition(18, 66)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-            Seinä.setPosition(138, 30)
+            Seinä.setPosition(18, 78)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
             Seinä.setPosition(18, 90)
-            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-            Seinä.setPosition(138, 90)
             sprites.destroyAllSpritesOfKind(SpriteKind.FoodI)
         }
         if (4 <= lvl) {
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-            Seinä.setPosition(30, 18)
+            Seinä.setPosition(42, 30)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-            Seinä.setPosition(124, 18)
+            Seinä.setPosition(42, 42)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-            Seinä.setPosition(30, 102)
-            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-            Seinä.setPosition(124, 102)
+            Seinä.setPosition(42, 54)
         }
         if (5 <= lvl) {
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-            Seinä.setPosition(30, 30)
+            Seinä.setPosition(42, 66)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-            Seinä.setPosition(124, 30)
+            Seinä.setPosition(42, 78)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-            Seinä.setPosition(30, 90)
-            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
-            Seinä.setPosition(124, 90)
+            Seinä.setPosition(42, 90)
         }
-        if (6 == lvl) {
+        if (6 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(66, 30)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(66, 42)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(66, 54)
+        }
+        if (7 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(66, 66)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(66, 78)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(66, 90)
+        }
+        if (8 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(90, 30)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(90, 42)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(90, 54)
+        }
+        if (9 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(90, 66)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(90, 78)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(90, 90)
+        }
+        if (10 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(114, 30)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(114, 42)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(114, 54)
+        }
+        if (11 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(114, 66)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(114, 78)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(114, 90)
+        }
+        if (12 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(138, 30)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(138, 42)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(138, 54)
+        }
+        if (13 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(138, 66)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(138, 78)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(138, 90)
+        }
+        if (14 == lvl) {
             game.setGameOverEffect(true, effects.confetti)
             game.gameOver(true)
         }

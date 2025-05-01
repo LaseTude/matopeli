@@ -1,113 +1,301 @@
-def on_up_pressed():
-    global X, Y
+namespace SpriteKind {
+    export const FoodI = SpriteKind.create()
+    export const Häntä = SpriteKind.create()
+    export const Wall = SpriteKind.create()
+}
+// näppäin komennot
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     X = 0
-    if Y != -12:
+    if (Y != -12) {
         Y += -12
-controller.up.on_event(ControllerButtonEvent.PRESSED, on_up_pressed)
-
-def on_left_pressed():
-    global Y, X
+    }
+})
+// Omena
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.FoodI, function (sprite, otherSprite) {
+    if (Math.percentChance(95)) {
+        info.changeScoreBy(2)
+        final_score += 2
+    } else {
+        info.changeScoreBy(-2)
+        final_score += -2
+    }
+    Apple.setPosition(randint(6, 150), randint(6, 114))
+})
+// Omena
+sprites.onOverlap(SpriteKind.Wall, SpriteKind.Projectile, function (sprite, otherSprite) {
+    if (Math.percentChance(5)) {
+        Bomb.setVelocity(0, 0)
+    } else {
+        Bomb.setVelocity(0, 0)
+        animation.runImageAnimation(
+        Bomb,
+        assets.animation`Explosion`,
+        200,
+        false
+        )
+    }
+    sprites.destroy(Bomb, effects.fire, 200)
+    sprites.destroy(Seinä, effects.clouds, 200)
+})
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Food, function (sprite, otherSprite) {
+    sprites.destroy(Babana, effects.spray, 200)
+    animation.runImageAnimation(
+    Bomb,
+    assets.animation`Explosion`,
+    200,
+    false
+    )
+    Bomb.setVelocity(0, 0)
+    Bomb.setImage(assets.image`Sirpaleet`)
+    pause(100)
+    sprites.destroy(Bomb, effects.fire, 200)
+    pause(5000)
+    Babana = sprites.create(assets.image`Banana`, SpriteKind.Food)
+    Babana.setPosition(randint(6, 150), randint(6, 114))
+})
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     Y = 0
-    if X != -12:
+    if (X != -12) {
         X += -12
-controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
-
-def on_right_pressed():
-    global Y, X
+    }
+})
+// Omena
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, otherSprite) {
+    if (Math.percentChance(5)) {
+        Bomb.setVelocity(0, 0)
+        info.changeScoreBy(20)
+        final_score += 20
+    } else {
+        Bomb.setVelocity(0, 0)
+        info.changeScoreBy(-5)
+        final_score += -5
+        animation.runImageAnimation(
+        Bomb,
+        assets.animation`Explosion`,
+        200,
+        false
+        )
+        Bomb.setImage(assets.image`Sirpaleet`)
+        pause(100)
+    }
+    sprites.destroy(Bomb, effects.fire, 200)
+})
+// Omena
+sprites.onOverlap(SpriteKind.Häntä, SpriteKind.Projectile, function (sprite, otherSprite) {
+    if (true) {
+        Bomb.setVelocity(0, 0)
+        info.changeScoreBy(20)
+        final_score += 20
+    } else {
+        Bomb.setVelocity(0, 0)
+        animation.runImageAnimation(
+        Bomb,
+        assets.animation`Explosion`,
+        200,
+        false
+        )
+        info.changeScoreBy(-5)
+        final_score += -5
+        info.changeLifeBy(-1)
+    }
+    sprites.destroy(Bomb, effects.fire, 200)
+})
+// banaani
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Food, function (sprite, otherSprite) {
+    info.changeScoreBy(1)
+    final_score += 1
+    Babana.setPosition(randint(6, 150), randint(6, 114))
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Wall, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+})
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     Y = 0
-    if X != 12:
+    if (X != 12) {
         X += 12
-controller.right.on_event(ControllerButtonEvent.PRESSED, on_right_pressed)
-
-def on_down_pressed():
-    global X, Y
+    }
+})
+// Omena
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
+    if (Math.percentChance(5)) {
+        Bomb.setVelocity(0, 0)
+        info.changeScoreBy(20)
+        final_score += 20
+    } else {
+        Bomb.setVelocity(0, 0)
+        animation.runImageAnimation(
+        Bomb,
+        assets.animation`Explosion`,
+        200,
+        false
+        )
+        info.changeScoreBy(-5)
+        final_score += -5
+        info.changeLifeBy(-1)
+    }
+    sprites.destroy(Bomb, effects.fire, 200)
+})
+controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     X = 0
-    if Y != 12:
+    if (Y != 12) {
         Y += 12
-controller.down.on_event(ControllerButtonEvent.PRESSED, on_down_pressed)
-
-def on_on_overlap(sprite, otherSprite):
-    info.change_score_by(2)
-    Apple.set_position(randint(6, 150), randint(6, 114))
-sprites.on_overlap(SpriteKind.player, SpriteKind.player, on_on_overlap)
-
-def on_life_zero():
-    music.stop_all_sounds()
-    music.play(music.melody_playable(music.wawawawaa),
-        music.PlaybackMode.IN_BACKGROUND)
-    game.game_over(False)
-info.on_life_zero(on_life_zero)
-
-def on_on_overlap2(sprite2, otherSprite2):
-    info.change_score_by(1)
-    Babana.set_position(randint(6, 150), randint(6, 114))
-sprites.on_overlap(SpriteKind.player, SpriteKind.food, on_on_overlap2)
-
-Y = 0
+    }
+})
+// kuolema
+info.onLifeZero(function () {
+    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+    music.stopAllSounds()
+    music.play(music.melodyPlayable(music.wawawawaa), music.PlaybackMode.InBackground)
+    game.gameOver(false)
+})
+// banaani
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+    info.changeScoreBy(1)
+    final_score += 1
+    Babana.setPosition(randint(6, 150), randint(6, 114))
+})
+// Omena
+sprites.onOverlap(SpriteKind.Player, SpriteKind.FoodI, function (sprite, otherSprite) {
+    if (Math.percentChance(95)) {
+        info.changeScoreBy(2)
+        final_score += 2
+    } else {
+        info.changeScoreBy(-2)
+        final_score += -2
+    }
+    Apple.setPosition(randint(6, 150), randint(6, 114))
+})
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.FoodI, function (sprite, otherSprite) {
+    sprites.destroy(Apple, effects.spray, 200)
+    animation.runImageAnimation(
+    Bomb,
+    assets.animation`Explosion`,
+    200,
+    false
+    )
+    Bomb.setVelocity(0, 0)
+    Bomb.setImage(assets.image`Sirpaleet`)
+    pause(100)
+    sprites.destroy(Bomb, effects.fire, 200)
+    pause(5000)
+    Apple = sprites.create(assets.image`Omena`, SpriteKind.FoodI)
+    Apple.setPosition(randint(6, 150), randint(6, 114))
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+})
+let hännänjatko: Sprite = null
+let Seinä: Sprite = null
+let Bomb: Sprite = null
+let Y = 0
+let X = 0
+let Apple: Sprite = null
+let Babana: Sprite = null
+let final_score = 0
+let lvl = 1
+info.setLife(1)
+scene.setBackgroundImage(assets.image`Tausta_2`)
+game.showLongText("Jos syöt banaanin saat 1 pisteen. Syömällä omenan saat 2 pistettä tai 5% mahdollisuudella menetät 2 pistettä. Jos osut pommiin menetät 5 pitettä, mutta jos se ei räjähdä saat 20 pistettä, ja jos törmäät siihen kuolet niinkuin myös seinään törmäämiseen.", DialogLayout.Full)
+game.showLongText("Your high score" + info.highScore(), DialogLayout.Top)
+info.setScore(0)
+Babana = sprites.create(assets.image`Banana`, SpriteKind.Food)
+Apple = sprites.create(assets.image`Omena`, SpriteKind.FoodI)
+let PlayerPlayer = sprites.create(assets.image`MadonPää`, SpriteKind.Player)
+let häntä = sprites.create(assets.image`Häntä`, SpriteKind.Häntä)
+let PlayerY = 6
+let PlayerX = 6
 X = 0
-Apple: Sprite = None
-Babana: Sprite = None
-info.set_life(1)
-scene.set_background_image(assets.image("""
-    Tausta_1
-    """))
-info.set_score(0)
-Babana = sprites.create(assets.image("""
-    Banana
-    """), SpriteKind.food)
-Apple = sprites.create(assets.image("""
-    Omena
-    """), SpriteKind.player)
-PlayerPlayer = sprites.create(assets.image("""
-    MadonPää
-    """), SpriteKind.player)
-häntä = sprites.create(img("""
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . a 3 3 3 3 3 3 3 3 a . . .
-        . . a 3 3 3 3 3 3 3 3 1 3 a . .
-        . . 3 3 3 3 3 3 3 3 3 3 1 3 . .
-        . . 3 3 3 3 3 3 3 3 3 3 3 3 . .
-        . . 3 3 3 3 3 3 3 3 3 3 3 3 . .
-        . . 3 3 3 3 3 3 3 3 3 3 3 3 . .
-        . . 3 3 3 3 3 3 3 3 3 3 3 3 . .
-        . . 3 3 3 3 3 3 3 3 3 3 3 3 . .
-        . . 3 b 3 3 3 3 3 3 3 3 3 3 . .
-        . . 3 b b 3 3 3 3 3 3 3 3 3 . .
-        . . a 3 b b 3 3 3 3 3 3 3 a . .
-        . . . a 3 3 3 3 3 3 3 3 a . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        """),
-    SpriteKind.projectile)
-PlayerY = 6
-PlayerX = 6
-X = 0
 Y = 0
-Babana.set_position(randint(6, 150), randint(6, 114))
-Apple.set_position(randint(6, 150), randint(6, 114))
-
-def on_forever():
-    global PlayerX, PlayerY
-    pause(499)
-    häntä.set_position(PlayerX, PlayerY)
-    pause(1)
+Babana.setPosition(randint(6, 150), randint(6, 114))
+Apple.setPosition(randint(6, 150), randint(6, 114))
+forever(function () {
+    pause(randint(500, 60000))
+    Bomb = sprites.createProjectileFromSide(assets.image`Bombn`, 0, 20)
+    Bomb.setPosition(randint(6, 150), Bomb.y)
+})
+// liikutetaan pelaajaa
+forever(function () {
+    pause(500)
+    häntä.setPosition(PlayerX, PlayerY)
     PlayerX += X
     PlayerY += Y
-    if PlayerX < 6 or PlayerY < 6 or (PlayerX > 150 or PlayerY > 114):
-        info.change_life_by(-1)
-forever(on_forever)
-
-def on_forever2():
-    PlayerPlayer.set_position(PlayerX, PlayerY)
-forever(on_forever2)
-
-def on_forever3():
-    
-    def on_pause_until():
-        pass
-    pause_until(on_pause_until)
-    
-    if X == 0 and Y == 0:
-        info.change_life_by(-1)
-forever(on_forever3)
+    PlayerPlayer.setPosition(PlayerX, PlayerY)
+    if (PlayerX < 6 || PlayerY < 6 || (PlayerX > 150 || PlayerY > 114)) {
+        info.changeLifeBy(-1)
+    }
+    if (final_score >= 2) {
+        hännänjatko = sprites.create(assets.image`Häntä`, SpriteKind.Enemy)
+        hännänjatko.setPosition(häntä.x, häntä.y)
+        hännänjatko.lifespan = final_score * 500
+    }
+})
+// elämän menetys
+forever(function () {
+    pauseUntil(() => controller.left.isPressed() || controller.up.isPressed() || (controller.right.isPressed() || controller.down.isPressed()))
+    if (X == 0 && Y == 0) {
+        info.changeLifeBy(-1)
+    }
+})
+forever(function () {
+    if (final_score >= 150 - (lvl - 1) * 4) {
+        game.showLongText("Läpäisit tason" + lvl, DialogLayout.Bottom)
+        if (lvl != 5) {
+            game.showLongText("Taso" + (lvl + 1), DialogLayout.Center)
+        }
+        PlayerX = 6
+        PlayerY = 6
+        X = 0
+        Y = 12
+        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+        sprites.destroyAllSpritesOfKind(SpriteKind.Wall)
+        häntä.setPosition(6, 6)
+        final_score = 0
+        final_score = 0
+        lvl += 1
+        if (2 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(18, 18)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(138, 18)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(18, 102)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(138, 102)
+        }
+        if (3 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(18, 30)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(138, 30)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(18, 90)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(138, 90)
+            sprites.destroyAllSpritesOfKind(SpriteKind.FoodI)
+        }
+        if (4 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(30, 18)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(124, 18)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(30, 102)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(124, 102)
+        }
+        if (5 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(30, 30)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(124, 30)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(30, 90)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(124, 90)
+        }
+        if (6 == lvl) {
+            game.setGameOverEffect(true, effects.confetti)
+            game.gameOver(true)
+        }
+    }
+})
