@@ -54,6 +54,16 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Häntä"
     },
+    "image7": {
+        "data": "hwQHAAcAAAAA/w8A8I74AO/piA+PjogPj4iID/CI+AAA/w8A",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Blueberry"
+    },
+    "image8": {
+        "data": "hwQHAAcAAAAAAAAAAI4IAODpiACAjogAgIiIAACICAAAAAAA",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Blueberry0"
+    },
     "vu)9Q%TZ(phYtX):{DWL": {
         "namespace": "myImages",
         "id": "vu)9Q%TZ(phYtX):{DWL",

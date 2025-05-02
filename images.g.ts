@@ -512,6 +512,26 @@ a 3 3 3 3 3 3 3 1 1 3 a
 c 3 3 3 3 3 3 3 3 3 3 c 
 . c 3 3 3 3 3 3 3 3 c . 
 `;
+            case "image7":
+            case "Blueberry":return img`
+. . f f f . . 
+. f e 8 8 f . 
+f e 9 e 8 8 f 
+f 8 e 8 8 8 f 
+f 8 8 8 8 8 f 
+. f 8 8 8 f . 
+. . f f f . . 
+`;
+            case "image8":
+            case "Blueberry0":return img`
+. . . . . . . 
+. . e 8 8 . . 
+. e 9 e 8 8 . 
+. 8 e 8 8 8 . 
+. 8 8 8 8 8 . 
+. . 8 8 8 . . 
+. . . . . . . 
+`;
         }
         return null;
     })

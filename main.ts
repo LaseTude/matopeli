@@ -2,6 +2,7 @@ namespace SpriteKind {
     export const FoodI = SpriteKind.create()
     export const Häntä = SpriteKind.create()
     export const Wall = SpriteKind.create()
+    export const FoodII = SpriteKind.create()
 }
 // näppäin komennot
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -21,6 +22,22 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.FoodI, function (sprite, otherSpr
     }
     Apple.setPosition(randint(6, 150), randint(6, 114))
 })
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.FoodII, function (sprite, otherSprite) {
+    sprites.destroy(Blueberry, effects.spray, 200)
+    animation.runImageAnimation(
+    Bomb,
+    assets.animation`Explosion`,
+    200,
+    false
+    )
+    Bomb.setVelocity(0, 0)
+    Bomb.setImage(assets.image`Sirpaleet`)
+    pause(100)
+    sprites.destroy(Bomb, effects.fire, 200)
+    pause(5000)
+    Blueberry = sprites.create(assets.image`Blueberry`, SpriteKind.FoodII)
+    Blueberry.setPosition(randint(6, 150), randint(6, 114))
+})
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Food, function (sprite, otherSprite) {
     sprites.destroy(Babana, effects.spray, 200)
     animation.runImageAnimation(
@@ -36,6 +53,16 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Food, function (sprite, othe
     pause(5000)
     Babana = sprites.create(assets.image`Banana`, SpriteKind.Food)
     Babana.setPosition(randint(6, 150), randint(6, 114))
+})
+// banaani
+sprites.onOverlap(SpriteKind.Player, SpriteKind.FoodII, function (sprite, otherSprite) {
+    info.changeScoreBy(1)
+    final_score += 1
+    Blueberry.setPosition(randint(6, 150), randint(6, 114))
+})
+sprites.onOverlap(SpriteKind.Wall, SpriteKind.FoodII, function (sprite, otherSprite) {
+    Blueberry = sprites.create(assets.image`Blueberry`, SpriteKind.FoodII)
+    Blueberry.setPosition(randint(6, 150), randint(6, 114))
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     Y = 0
@@ -140,6 +167,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
     final_score += 1
     Babana.setPosition(randint(6, 150), randint(6, 114))
 })
+// banaani
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.FoodII, function (sprite, otherSprite) {
+    info.changeScoreBy(1)
+    final_score += 1
+    Blueberry.setPosition(randint(6, 150), randint(6, 114))
+})
 // Omena
 sprites.onOverlap(SpriteKind.Player, SpriteKind.FoodI, function (sprite, otherSprite) {
     if (Math.percentChance(95)) {
@@ -173,6 +206,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 let Seinä: Sprite = null
 let hännänjatko: Sprite = null
 let Bomb: Sprite = null
+let Blueberry: Sprite = null
 let Y = 0
 let X = 0
 let Apple: Sprite = null
@@ -192,7 +226,7 @@ let häntä = sprites.create(assets.image`Häntä`, SpriteKind.Häntä)
 let PlayerY = 6
 let PlayerX = 6
 X = 0
-Y = 0
+Y = 12
 Babana.setPosition(randint(6, 150), randint(6, 114))
 Apple.setPosition(randint(6, 150), randint(6, 114))
 forever(function () {
@@ -243,6 +277,8 @@ forever(function () {
         lvl += 1
         if (2 <= lvl) {
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(18, 18)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
             Seinä.setPosition(18, 30)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
             Seinä.setPosition(18, 42)
@@ -256,7 +292,6 @@ forever(function () {
             Seinä.setPosition(18, 78)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
             Seinä.setPosition(18, 90)
-            sprites.destroyAllSpritesOfKind(SpriteKind.FoodI)
         }
         if (4 <= lvl) {
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
@@ -273,8 +308,13 @@ forever(function () {
             Seinä.setPosition(42, 78)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
             Seinä.setPosition(42, 90)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(42, 102)
+            sprites.destroyAllSpritesOfKind(SpriteKind.FoodI)
         }
         if (6 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(66, 18)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
             Seinä.setPosition(66, 30)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
@@ -305,14 +345,20 @@ forever(function () {
             Seinä.setPosition(90, 78)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
             Seinä.setPosition(90, 90)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(90, 102)
         }
         if (10 <= lvl) {
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(114, 18)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
             Seinä.setPosition(114, 30)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
             Seinä.setPosition(114, 42)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
             Seinä.setPosition(114, 54)
+            sprites.destroyAllSpritesOfKind(SpriteKind.Food)
+            Blueberry = sprites.create(assets.image`Blueberry`, SpriteKind.FoodII)
         }
         if (11 <= lvl) {
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
@@ -337,10 +383,20 @@ forever(function () {
             Seinä.setPosition(138, 78)
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
             Seinä.setPosition(138, 90)
+            Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
+            Seinä.setPosition(138, 102)
         }
         if (14 == lvl) {
             game.setGameOverEffect(true, effects.confetti)
             game.gameOver(true)
         }
+    }
+})
+forever(function () {
+    if (lvl >= 7) {
+        Blueberry.setImage(assets.image`Blueberry`)
+        pause(100)
+        Blueberry.setImage(assets.image`Blueberry0`)
+        pause(100)
     }
 })
