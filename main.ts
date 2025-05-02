@@ -183,7 +183,7 @@ let lvl = 1
 info.setLife(1)
 scene.setBackgroundImage(assets.image`Tausta_2`)
 game.showLongText("Jos syöt banaanin saat 1 pisteen. Syömällä omenan saat 2 pistettä tai 5% mahdollisuudella menetät 2 pistettä. Jos osut pommiin menetät 5 pitettä, mutta jos se ei räjähdä saat 20 pistettä, ja jos törmäät siihen kuolet niinkuin myös seinään törmäämiseen.", DialogLayout.Full)
-game.showLongText("Your high score" + info.highScore(), DialogLayout.Top)
+game.showLongText("Sinun korkein pistemäärä:" + info.highScore(), DialogLayout.Top)
 info.setScore(0)
 Babana = sprites.create(assets.image`Banana`, SpriteKind.Food)
 Apple = sprites.create(assets.image`Omena`, SpriteKind.FoodI)
