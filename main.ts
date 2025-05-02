@@ -91,7 +91,7 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Food, function (sprite, otherSpri
     Babana.setPosition(randint(6, 150), randint(6, 114))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Wall, function (sprite, otherSprite) {
-    if (!(final_score >= 150)) {
+    if (!(final_score >= 120)) {
         info.changeLifeBy(-1)
     }
 })
@@ -207,7 +207,7 @@ forever(function () {
     PlayerX += X
     PlayerY += Y
     PlayerPlayer.setPosition(PlayerX, PlayerY)
-    if (!(final_score >= 150)) {
+    if (!(final_score >= 120)) {
         if (PlayerX < 6 || PlayerY < 6 || (PlayerX > 150 || PlayerY > 114)) {
             info.changeLifeBy(-1)
         }
@@ -226,7 +226,7 @@ forever(function () {
     }
 })
 forever(function () {
-    if (final_score >= 150 - (lvl - 1) * 3) {
+    if (final_score >= 120 - (lvl - 1) * 3) {
         game.showLongText("Läpäisit tason" + lvl, DialogLayout.Bottom)
         if (lvl != 13) {
             game.showLongText("Taso" + (lvl + 1), DialogLayout.Center)
