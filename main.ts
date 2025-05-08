@@ -366,6 +366,28 @@ forever(function () {
             Seinä.setPosition(114, 54)
             sprites.destroyAllSpritesOfKind(SpriteKind.Food)
             Blueberry = sprites.create(assets.image`Blueberry`, SpriteKind.FoodII)
+            animation.runImageAnimation(
+            Blueberry,
+            [img`
+                . . f f f . . 
+                . f e 8 8 f . 
+                f e 9 e 8 8 f 
+                f 8 e 8 8 8 f 
+                f 8 8 8 8 8 f 
+                . f 8 8 8 f . 
+                . . f f f . . 
+                `,img`
+                . . . . . . . 
+                . . e 8 8 . . 
+                . e 9 e 8 8 . 
+                . 8 e 8 8 8 . 
+                . 8 8 8 8 8 . 
+                . . 8 8 8 . . 
+                . . . . . . . 
+                `],
+            200,
+            true
+            )
         }
         if (11 <= lvl) {
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
@@ -399,13 +421,5 @@ forever(function () {
             game.setGameOverEffect(true, effects.confetti)
             game.gameOver(true)
         }
-    }
-})
-forever(function () {
-    if (lvl >= 7) {
-        Blueberry.setImage(assets.image`Blueberry`)
-        pause(100)
-        Blueberry.setImage(assets.image`Blueberry0`)
-        pause(100)
     }
 })
