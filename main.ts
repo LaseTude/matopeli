@@ -280,8 +280,7 @@ forever(function () {
         sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
         sprites.destroyAllSpritesOfKind(SpriteKind.Wall)
         häntä.setPosition(6, 6)
-        final_score = 0
-        final_score = 0
+        final_score += -1 * (120 - (lvl - 1) * 3)
         lvl += 1
         if (2 <= lvl) {
             Seinä = sprites.create(assets.image`Seinä`, SpriteKind.Wall)
