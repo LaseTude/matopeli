@@ -24,6 +24,7 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.FoodI, function (sprite, otherSpr
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.FoodII, function (sprite, otherSprite) {
     sprites.destroy(Blueberry, effects.spray, 200)
+    music.play(music.melodyPlayable(music.bigCrash), music.PlaybackMode.UntilDone)
     animation.runImageAnimation(
     Bomb,
     assets.animation`Explosion`,
@@ -40,6 +41,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.FoodII, function (sprite, ot
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Food, function (sprite, otherSprite) {
     sprites.destroy(Babana, effects.spray, 200)
+    music.play(music.melodyPlayable(music.bigCrash), music.PlaybackMode.UntilDone)
     animation.runImageAnimation(
     Bomb,
     assets.animation`Explosion`,
@@ -80,6 +82,7 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, oth
         Bomb.setVelocity(0, 0)
         info.changeScoreBy(-5)
         final_score += -5
+        music.play(music.melodyPlayable(music.bigCrash), music.PlaybackMode.UntilDone)
         animation.runImageAnimation(
         Bomb,
         assets.animation`Explosion`,
@@ -99,6 +102,7 @@ sprites.onOverlap(SpriteKind.Häntä, SpriteKind.Projectile, function (sprite, o
         final_score += 20
     } else {
         Bomb.setVelocity(0, 0)
+        music.play(music.melodyPlayable(music.bigCrash), music.PlaybackMode.UntilDone)
         animation.runImageAnimation(
         Bomb,
         assets.animation`Explosion`,
@@ -136,6 +140,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
         final_score += 20
     } else {
         Bomb.setVelocity(0, 0)
+        music.play(music.melodyPlayable(music.bigCrash), music.PlaybackMode.UntilDone)
         animation.runImageAnimation(
         Bomb,
         assets.animation`Explosion`,
@@ -186,6 +191,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.FoodI, function (sprite, otherSp
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.FoodI, function (sprite, otherSprite) {
     sprites.destroy(Apple, effects.spray, 200)
+    music.play(music.melodyPlayable(music.bigCrash), music.PlaybackMode.UntilDone)
     animation.runImageAnimation(
     Bomb,
     assets.animation`Explosion`,
@@ -217,7 +223,6 @@ let lvl = 1
 info.setLife(1)
 scene.setBackgroundImage(assets.image`Tausta_2`)
 game.showLongText("Jos syöt banaanin saat 1 pisteen. Syömällä omenan saat 2 pistettä tai 5% mahdollisuudella menetät 2 pistettä. Jos osut pommiin menetät 5 pitettä, mutta jos se ei räjähdä saat 20 pistettä, ja jos törmäät siihen kuolet niinkuin myös seinään törmäämiseen.", DialogLayout.Full)
-game.showLongText("Sinun korkein pistemäärä:" + info.highScore(), DialogLayout.Top)
 info.setScore(0)
 Babana = sprites.create(assets.image`Banana`, SpriteKind.Food)
 Apple = sprites.create(assets.image`Omena`, SpriteKind.FoodI)
@@ -229,10 +234,12 @@ X = 0
 Y = 12
 Babana.setPosition(randint(6, 150), randint(6, 114))
 Apple.setPosition(randint(6, 150), randint(6, 114))
+music.play(music.createSong(assets.song`Lyönnit`), music.PlaybackMode.LoopingInBackground)
 forever(function () {
     pause(randint(500, 60000))
     Bomb = sprites.createProjectileFromSide(assets.image`Bombn`, 0, 20)
     Bomb.setPosition(randint(6, 150), Bomb.y)
+    pause(5555)
 })
 // liikutetaan pelaajaa
 forever(function () {
@@ -261,6 +268,7 @@ forever(function () {
 })
 forever(function () {
     if (final_score >= 120 - (lvl - 1) * 3) {
+        music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.UntilDone)
         game.showLongText("Läpäisit tason" + lvl, DialogLayout.Bottom)
         if (lvl != 13) {
             game.showLongText("Taso" + (lvl + 1), DialogLayout.Center)
@@ -387,6 +395,8 @@ forever(function () {
             Seinä.setPosition(138, 102)
         }
         if (14 == lvl) {
+            music.play(music.stringPlayable("C C D D E E F F ", 240), music.PlaybackMode.UntilDone)
+            music.play(music.stringPlayable("G G A A B B C5 C5 ", 240), music.PlaybackMode.UntilDone)
             game.setGameOverEffect(true, effects.confetti)
             game.gameOver(true)
         }
