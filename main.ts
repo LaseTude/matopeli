@@ -268,8 +268,8 @@ forever(function () {
 })
 forever(function () {
     if (final_score >= 120 - (lvl - 1) * 3) {
-        music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.UntilDone)
         game.showLongText("Läpäisit tason" + lvl, DialogLayout.Bottom)
+        music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.UntilDone)
         if (lvl != 13) {
             game.showLongText("Taso" + (lvl + 1), DialogLayout.Center)
         }
