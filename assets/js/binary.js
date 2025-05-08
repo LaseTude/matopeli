@@ -1,4 +1,4 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v2.0.56/---simulator","cdnUrl":"https://cdn.makecode.com","version":"1.4.1","target":"arcade","targetVersion":"2.0.56","repo":"lasetude/matopeli"}
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v2.0.56/---simulator","cdnUrl":"https://cdn.makecode.com","version":"1.4.2","target":"arcade","targetVersion":"2.0.56","repo":"lasetude/matopeli"}
 // total=2704269 new=24.30% cached=71.57% other=4.13%
 (function (ectx) {
 'use strict';
@@ -626,7 +626,7 @@ const pxsim_pxtrt = pxsim.pxtrt;
 const pxsim_numops = pxsim.numops;
 
 
-function _main___P93593(s) {
+function _main___P93925(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1432,13 +1432,13 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-_main___P93593.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/arcade-sprite-data/main.ts","functionName":"<main>","argumentNames":[]}
-_main___P93593.continuations = [  ]
+_main___P93925.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/arcade-sprite-data/main.ts","functionName":"<main>","argumentNames":[]}
+_main___P93925.continuations = [  ]
 
-function _main___P93593_mk(s) {
+function _main___P93925_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: _main___P93593, depth: s.depth + 1,
+        parent: s, fn: _main___P93925, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -76342,5 +76342,5 @@ const sprites_BaseSpriteSayRenderer__C2273_VT = mkVTable({
 
 const breakpoints = setupDebugger(1, ["transparency16___4965","FoodI___91995","H_nt____91998","Wall___92001","FoodII___92004","X___92011","Y___92015","final_score___92034","Apple___92048","Blueberry___92062","Bomb___92071","Babana___92105","PlayerPlayer___92499","h_nt____92505","PlayerX___92513","PlayerY___92511","h_nn_njatko___92477","lvl___92480","Sein____92475"])
 
-return _main___P93593
+return _main___P93925
 })
