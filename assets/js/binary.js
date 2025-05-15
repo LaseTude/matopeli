@@ -1,4 +1,4 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v2.0.56/---simulator","cdnUrl":"https://cdn.makecode.com","version":"1.4.4","target":"arcade","targetVersion":"2.0.56","repo":"lasetude/matopeli"}
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v2.0.56/---simulator","cdnUrl":"https://cdn.makecode.com","version":"1.4.5","target":"arcade","targetVersion":"2.0.56","repo":"lasetude/matopeli"}
 // total=2702999 new=24.26% cached=71.61% other=4.13%
 (function (ectx) {
 'use strict';
