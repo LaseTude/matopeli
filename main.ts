@@ -236,10 +236,12 @@ Babana.setPosition(randint(6, 150), randint(6, 114))
 Apple.setPosition(randint(6, 150), randint(6, 114))
 music.play(music.createSong(assets.song`Lyönnit`), music.PlaybackMode.LoopingInBackground)
 forever(function () {
-    pause(randint(500, 60000))
-    Bomb = sprites.createProjectileFromSide(assets.image`Bombn`, 0, 20)
-    Bomb.setPosition(randint(6, 150), Bomb.y)
-    pause(5555)
+    pause(randint(0, 60000))
+    if (info.life() != 0) {
+        Bomb = sprites.createProjectileFromSide(assets.image`Bombn`, 0, 20)
+        Bomb.setPosition(randint(6, 150), Bomb.y)
+        pause(5555)
+    }
 })
 // liikutetaan pelaajaa
 forever(function () {
